@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warkop Burjo Kong Alim - Nongkrong Enak & Murah</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        .menu-category {
+            margin-bottom: 50px;
+        }
+        .menu-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        .menu-category > p {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .price {
+            display: block;
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Kong Alim</a>
+            <ul class="nav-links">
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+                <li><a href="#kontak" class="btn-contact">Kontak</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Tempat Nongkrong <br><span>Paling Asik</span></h1>
+            <p>Nikmati Burjo Spesial, Indomie Kekinian, dan Kopi Nikmat dengan harga mahasiswa.</p>
+            <a href="#menu" class="btn-primary">Lihat Menu</a>
+        </div>
+    </header>
+
+    <!-- Tentang Kami -->
+    <section id="tentang" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tentang Kami</h2>
+                <p>Lebih dari sekadar warung burjo.</p>
+            </div>
+            <div class="about-content">
+                <p>
+                    Warkop Burjo Kong Alim adalah warung kopi dan burjo yang siap menemani
+                    hari-hari Anda. Cocok untuk mahasiswa, pekerja, dan siapa saja yang
+                    ingin makan enak sambil nongkrong santai.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Menu Andalan</h2>
+                <p>Pilihan favorit pelanggan setia kami.</p>
+            </div>
+            
+            @foreach($menu as $key => $category)
+            <div class="menu-category">
+                <h3>{{ $category['title'] }}</h3>
+                <p>{{ $category['description'] }}</p>
+                
+                <div class="menu-grid">
+                    @foreach($category['items'] as $item)
+                    <div class="menu-card">
+                        @if(!empty($item['image']))
+                            <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['name'] }}" class="menu-image">
+                        @else
+                            <div class="icon-box"><i class="fas fa-utensils"></i></div>
+                        @endif
+                        <h4>{{ $item['name'] }}</h4>
+                        <span class="price">Rp {{ number_format($item['price'], 0, ',', '.') }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </section>
+
+    <!-- Lokasi -->
+    <section id="lokasi" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lokasi Kami</h2>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Alamat:</strong> Jl. H. Sairi, Tugu, Kec. Cimanggis, Kota Depok, Jawa Barat 16451</p>
+                <p><strong>Buka:</strong> Setiap hari, 16.00 - 02.00 WIB</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Mampir Sekarang!</h2>
+            <p>Rasakan nongkrong nyaman dengan harga ramah di kantong.</p>
+            <a href="#lokasi" class="btn-secondary">Kunjungi Kami</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <h3>Kong Alim</h3>
+                <p>Nongkrong hemat, perut kenyang.</p>
+            </div>
+            <div class="footer-contact" id="kontak">
+                <h4>Hubungi Kami</h4>
+                <p><i class="fab fa-whatsapp"></i> 08xxxxxxxxxx</p>
+                <p><i class="fab fa-instagram"></i> @burjokongalim</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Warkop Burjo Kong Alim. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/script.js') }}"></script>
+</body>
+</html>
