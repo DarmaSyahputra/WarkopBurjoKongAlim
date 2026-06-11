@@ -1,59 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Informasi Profil dan Katalog Warkop Burjo Kong Alim
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi ini adalah Sistem Informasi Profil dan Layanan Katalog berbasis Web untuk **Warkop Burjo Kong Alim** yang dibangun menggunakan framework **Laravel** dan **Tailwind CSS**. Sistem ini memfasilitasi pengunjung untuk melihat informasi warkop, daftar menu secara dinamis, lokasi, serta mengirim pesan, sekaligus menyediakan panel admin bagi pengelola warkop untuk mengelola data kategori, menu, pesan masuk, dan pengaturan informasi warkop.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Persyaratan Sistem
+Sebelum menjalankan aplikasi, pastikan perangkat Anda telah terpasang:
+- PHP >= 8.2 (Direkomendasikan menggunakan PHP dari XAMPP)
+- Composer
+- MySQL Server (Bisa dijalankan melalui XAMPP Control Panel)
+- Node.js & npm (Untuk kompilasi aset frontend)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Langkah Instalasi & Menjalankan Aplikasi
 
-## Learning Laravel
+Jika Anda baru pertama kali mengunduh proyek ini atau ingin menjalankannya kembali:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+1. **Aktifkan MySQL Database:**
+   Buka **XAMPP Control Panel** dan klik **Start** pada modul **MySQL** (dan **Apache** jika diperlukan).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Instal Dependensi PHP (Composer):**
+   ```bash
+   composer install
+   ```
 
-## Laravel Sponsors
+3. **Instal Dependensi Frontend (npm):**
+   ```bash
+   npm install
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4. **Konfigurasi Environment (.env):**
+   Pastikan file `.env` sudah dikonfigurasi dengan database yang sesuai. Berikut adalah konfigurasi default:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=warkop_db
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-### Premium Partners
+5. **Buat Database & Jalankan Migrasi + Seeder:**
+   Jalankan perintah berikut untuk membuat tabel database dan mengisi data awal (kategori, menu default, pengaturan warkop, dan akun admin):
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+6. **Kompilasi Aset Frontend (Vite):**
+   Untuk lingkungan produksi:
+   ```bash
+   npm run build
+   ```
+   Atau untuk lingkungan pengembangan secara real-time:
+   ```bash
+   npm run dev
+   ```
 
-## Contributing
+7. **Jalankan Laravel Development Server:**
+   ```bash
+   php artisan serve
+   ```
+   Aplikasi dapat diakses di browser melalui URL: [http://localhost:8000](http://localhost:8000)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🔑 Akun Administrator Default
+Untuk mengelola warkop, Anda dapat masuk ke panel admin dengan akun berikut:
+- **Email:** `adminwarkop@gmail.com`
+- **Password:** `burjokongalim`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 📖 Panduan Penggunaan: Dari Login hingga Menambahkan Produk (Menu)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Berikut adalah panduan alur kerja untuk masuk sebagai admin dan menambahkan menu baru ke dalam katalog warkop secara dinamis:
 
-## License
+### 1. Proses Login Admin
+1. Buka browser dan akses halaman login melalui URL: [http://localhost:8000/login](http://localhost:8000/login)
+2. Masukkan kredensial admin:
+   - **Email:** `adminwarkop@gmail.com`
+   - **Password:** `burjokongalim`
+3. Klik tombol **Log in**.
+4. Anda akan otomatis dialihkan ke halaman **Dashboard Admin** (`http://localhost:8000/admin/dashboard`).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 2. Memahami Dashboard Admin
+Halaman dashboard admin menampilkan ringkasan data penting warkop secara real-time:
+- **Total Menu:** Jumlah menu yang saat ini terdaftar.
+- **Kategori:** Jumlah kategori menu (seperti Kopi, Non Kopi, Burjo, dll.).
+- **Total Pesan & Pesan Baru:** Jumlah kontak/masukan yang dikirim oleh pengunjung melalui formulir kontak di landing page.
+- **Pesan Terbaru:** Daftar 5 pesan terbaru dari pelanggan.
+
+### 3. Mengelola Kategori (Opsional)
+Sebelum menambahkan menu, pastikan kategori menu tersebut sudah ada. Anda dapat mengelolanya di menu **Kategori Menu** (`/admin/categories`):
+- Klik **Kategori Menu** di sidebar.
+- Anda dapat menambah kategori baru (misalnya: *Cemilan*), mengedit kategori yang sudah ada, atau menghapusnya.
+
+### 4. Menambahkan Produk / Menu Baru
+Untuk menambahkan menu makanan atau minuman baru ke dalam katalog warkop:
+1. Klik menu **Menu Warkop** di sidebar sebelah kiri atau akses URL: [http://localhost:8000/admin/menus](http://localhost:8000/admin/menus).
+2. Klik tombol **Tambah Menu** di sudut kanan atas.
+3. Isi formulir penambahan menu dengan data berikut:
+   - **Kategori:** Pilih kategori menu yang sesuai (misalnya: *Burjo*, *Kopi*, *Indomie*).
+   - **Nama Menu:** Masukkan nama menu (misalnya: *Indomie Keju Pedas*).
+   - **Deskripsi:** Berikan penjelasan singkat tentang hidangan/minuman tersebut (misalnya: *Indomie goreng dengan parutan keju cheddar melimpah dan irisan cabai rawit*).
+   - **Harga (Rp):** Masukkan nominal harga dalam angka saja tanpa titik/koma (misalnya: `12000`).
+   - **Gambar:** Unggah foto menu dalam format JPEG, PNG, atau JPG (maksimal 2MB).
+   - **Status Ketersediaan:** Centang pilihan **Tersedia** agar menu langsung aktif dan muncul di katalog halaman utama.
+4. Klik tombol **Simpan Menu**.
+5. Sistem akan menyimpan data ke database dan mengunggah gambar ke direktori `public/storage/menus`. Anda akan dialihkan kembali ke daftar menu dengan pesan sukses *"Menu berhasil ditambahkan."*
+
+### 5. Memverifikasi Hasil di Halaman Utama (Landing Page)
+1. Klik tautan **Lihat Website** di bagian header kanan panel admin, atau buka tab baru dan akses [http://localhost:8000](http://localhost:8000).
+2. Scroll ke bagian **Menu Andalan**.
+3. Cari kategori yang Anda pilih tadi (misalnya: *Indomie*).
+4. Pastikan menu yang baru Anda tambahkan sudah tampil secara dinamis lengkap dengan gambar, nama, deskripsi, dan format harga Rupiah (`Rp 12.000`).
