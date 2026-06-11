@@ -37,6 +37,15 @@ CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
    * **Value**: *Tautan `CLOUDINARY_URL` Anda.*
 4. Simpan perubahan tersebut.
 
+### 3. Daftarkan Disk Cloudinary di `config/filesystems.php`
+Buka file [config/filesystems.php](file:///c:/xampp/htdocs/ProjectSkripsi/config/filesystems.php) dan tambahkan konfigurasi disk `cloudinary` di dalam array `'disks'`:
+```php
+'cloudinary' => [
+    'driver' => 'cloudinary',
+    'url' => env('CLOUDINARY_URL'),
+],
+```
+
 ---
 
 ## 💻 Langkah 4: Penyesuaian Kode Proyek
