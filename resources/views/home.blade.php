@@ -174,9 +174,7 @@
             <div class="footer-contact">
                 <h4>Ikuti Kami</h4>
                 <div class="social-links" style="margin-top: 10px;">
-                    <a href="{{ $settings['social_instagram'] }}" target="_blank" style="margin-right: 15px; color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-                    <a href="{{ $settings['social_whatsapp'] }}" target="_blank" style="margin-right: 15px; color: white; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
-                    <a href="{{ $settings['social_tiktok'] }}" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
+                    <a href="{{ $settings['social_whatsapp'] }}" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
