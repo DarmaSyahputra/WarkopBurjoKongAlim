@@ -30,7 +30,7 @@ class Menu extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image) {
-            return asset('storage/menus/' . $this->image);
+            return asset('images/menus/' . $this->image);
         }
         return asset('images/default-menu.jpg');
     }

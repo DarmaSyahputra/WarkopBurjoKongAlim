@@ -52,7 +52,7 @@ class MenuController extends Controller
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('storage/menus'), $imageName);
+            $request->image->move(public_path('images/menus'), $imageName);
             $data['image'] = $imageName;
         }
 
@@ -85,12 +85,12 @@ class MenuController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image
-            if ($menu->image && file_exists(public_path('storage/menus/' . $menu->image))) {
-                unlink(public_path('storage/menus/' . $menu->image));
+            if ($menu->image && file_exists(public_path('images/menus/' . $menu->image))) {
+                unlink(public_path('images/menus/' . $menu->image));
             }
 
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('storage/menus'), $imageName);
+            $request->image->move(public_path('images/menus'), $imageName);
             $data['image'] = $imageName;
         }
 
@@ -101,8 +101,8 @@ class MenuController extends Controller
 
     public function destroy(Menu $menu)
     {
-        if ($menu->image && file_exists(public_path('storage/menus/' . $menu->image))) {
-            unlink(public_path('storage/menus/' . $menu->image));
+        if ($menu->image && file_exists(public_path('images/menus/' . $menu->image))) {
+            unlink(public_path('images/menus/' . $menu->image));
         }
         $menu->delete();
         return redirect()->route('admin.menus.index')->with('success', 'Menu berhasil dihapus.');
