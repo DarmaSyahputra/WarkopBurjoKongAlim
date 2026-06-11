@@ -73,8 +73,10 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 ```php
 if ($request->hasFile('image')) {
     // Unggah langsung ke Cloudinary dan simpan URL aman-nya
-    $uploadedFileUrl = $request->file('image')->storeOnCloudinary('warkop-menus')->getSecurePath();
-    $data['image'] = $uploadedFileUrl;
+    $result = Cloudinary::uploadApi()->upload($request->file('image')->getRealPath(), [
+        'folder' => 'warkop-menus',
+    ]);
+    $data['image'] = $result['secure_url'];
 }
 ```
 
@@ -90,8 +92,10 @@ if ($request->hasFile('image')) {
     }
 
     // Unggah gambar baru ke Cloudinary
-    $uploadedFileUrl = $request->file('image')->storeOnCloudinary('warkop-menus')->getSecurePath();
-    $data['image'] = $uploadedFileUrl;
+    $result = Cloudinary::uploadApi()->upload($request->file('image')->getRealPath(), [
+        'folder' => 'warkop-menus',
+    ]);
+    $data['image'] = $result['secure_url'];
 }
 ```
 

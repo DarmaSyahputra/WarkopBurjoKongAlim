@@ -52,8 +52,10 @@ class MenuController extends Controller
         }
 
         if ($request->hasFile('image')) {
-            $uploadedFileUrl = $request->file('image')->storeOnCloudinary('warkop-menus')->getSecurePath();
-            $data['image'] = $uploadedFileUrl;
+            $result = Cloudinary::uploadApi()->upload($request->file('image')->getRealPath(), [
+                'folder' => 'warkop-menus',
+            ]);
+            $data['image'] = $result['secure_url'];
         }
 
         Menu::create($data);
@@ -91,8 +93,10 @@ class MenuController extends Controller
                 }
             }
 
-            $uploadedFileUrl = $request->file('image')->storeOnCloudinary('warkop-menus')->getSecurePath();
-            $data['image'] = $uploadedFileUrl;
+            $result = Cloudinary::uploadApi()->upload($request->file('image')->getRealPath(), [
+                'folder' => 'warkop-menus',
+            ]);
+            $data['image'] = $result['secure_url'];
         }
 
         $menu->update($data);
