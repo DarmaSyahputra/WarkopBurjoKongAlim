@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class MenuController extends Controller
 {
@@ -51,9 +52,8 @@ class MenuController extends Controller
         }
 
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/menus'), $imageName);
-            $data['image'] = $imageName;
+            $uploadedFileUrl = $request->file('image')->storeOnCloudinary('warkop-menus')->getSecurePath();
+            $data['image'] = $uploadedFileUrl;
         }
 
         Menu::create($data);
@@ -84,14 +84,15 @@ class MenuController extends Controller
         }
 
         if ($request->hasFile('image')) {
-            // Delete old image
-            if ($menu->image && file_exists(public_path('images/menus/' . $menu->image))) {
-                unlink(public_path('images/menus/' . $menu->image));
+            // Delete old local image if exists
+            if ($menu->image && !filter_var($menu->image, FILTER_VALIDATE_URL)) {
+                if (file_exists(public_path('images/menus/' . $menu->image))) {
+                    unlink(public_path('images/menus/' . $menu->image));
+                }
             }
 
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/menus'), $imageName);
-            $data['image'] = $imageName;
+            $uploadedFileUrl = $request->file('image')->storeOnCloudinary('warkop-menus')->getSecurePath();
+            $data['image'] = $uploadedFileUrl;
         }
 
         $menu->update($data);
@@ -101,8 +102,10 @@ class MenuController extends Controller
 
     public function destroy(Menu $menu)
     {
-        if ($menu->image && file_exists(public_path('images/menus/' . $menu->image))) {
-            unlink(public_path('images/menus/' . $menu->image));
+        if ($menu->image && !filter_var($menu->image, FILTER_VALIDATE_URL)) {
+            if (file_exists(public_path('images/menus/' . $menu->image))) {
+                unlink(public_path('images/menus/' . $menu->image));
+            }
         }
         $menu->delete();
         return redirect()->route('admin.menus.index')->with('success', 'Menu berhasil dihapus.');

@@ -30,6 +30,9 @@ class Menu extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image) {
+            if (filter_var($this->image, FILTER_VALIDATE_URL)) {
+                return $this->image;
+            }
             return asset('images/menus/' . $this->image);
         }
         return asset('images/default-menu.jpg');
