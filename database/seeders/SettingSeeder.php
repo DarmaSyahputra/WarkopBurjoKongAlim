@@ -27,7 +27,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'warkop_address',
-                'value' => 'Jl. Pendidikan No. 123, Sleman, Yogyakarta',
+                'value' => 'Jl. H. Sairi, Tugu, Kec. Cimanggis, Kota Depok, Jawa Barat 16451',
                 'label' => 'Alamat',
                 'type' => 'text'
             ],

@@ -116,11 +116,28 @@
             <div class="section-header">
                 <h2>Lokasi & Jam Operasional</h2>
             </div>
-            <div class="info-box">
-                <i class="fas fa-map-marker-alt"></i>
-                <p><strong>Alamat:</strong> {{ $settings['warkop_address'] }}</p>
-                <p><strong>Buka:</strong> {{ $settings['warkop_hours'] }}</p>
-                <p><strong>WhatsApp:</strong> {{ $settings['warkop_phone'] }}</p>
+            <div class="location-grid">
+                <!-- Map Embed -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Warung%20burjo%20kong%20alim,%20Jl.%20H.%20Sairi,%20Tugu,%20Kec.%20Cimanggis,%20Kota%20Depok,%20Jawa%20Barat%2016451&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><strong>Alamat:</strong> {{ $settings['warkop_address'] }}</p>
+                    <p><strong>Buka:</strong> {{ $settings['warkop_hours'] }}</p>
+                    <p><strong>WhatsApp:</strong> {{ $settings['warkop_phone'] }}</p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://maps.app.goo.gl/7N6QSR16or4w54DW7?g_st=aw" target="_blank" class="btn-primary">
+                            <i class="fas fa-directions" style="margin-right: 8px;"></i>Petunjuk Arah
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
