@@ -21,7 +21,7 @@ composer require cloudinary-labs/cloudinary-laravel
 ---
 
 ## ⚙️ Langkah 3: Konfigurasi Environment (.env & Vercel)
-
+pada tam
 ### 1. Konfigurasi Lokal (`.env`)
 Buka file `.env` di komputer Anda, lalu tambahkan baris berikut di bagian paling bawah:
 ```env
