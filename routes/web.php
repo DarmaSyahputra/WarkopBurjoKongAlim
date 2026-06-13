@@ -27,6 +27,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+
+    Route::get('change-password', [App\Http\Controllers\Admin\PasswordController::class, 'edit'])->name('password.edit');
+    Route::put('change-password', [App\Http\Controllers\Admin\PasswordController::class, 'update'])->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {

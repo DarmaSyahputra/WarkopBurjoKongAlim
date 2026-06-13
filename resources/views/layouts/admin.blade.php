@@ -40,6 +40,9 @@
             <a href="{{ route('admin.settings.index') }}" class="flex items-center px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors {{ Request::is('admin/settings*') ? 'bg-slate-800 text-orange-400' : '' }}">
                 <i class="fas fa-cog w-6"></i> Pengaturan
             </a>
+            <a href="{{ route('admin.password.edit') }}" class="flex items-center px-4 py-3 rounded-lg hover:bg-slate-800 transition-colors {{ Request::is('admin/change-password*') ? 'bg-slate-800 text-orange-400' : '' }}">
+                <i class="fas fa-key w-6"></i> Ubah Password
+            </a>
             <div class="pt-10">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
