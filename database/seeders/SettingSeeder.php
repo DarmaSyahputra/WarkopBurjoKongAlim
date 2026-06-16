@@ -21,7 +21,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'warkop_description',
-                'value' => 'Tempat nongkrong asik dengan citarasa istimewa dan harga mahasiswa.',
+                'value' => 'Tempat berkumpul yang hangat dengan aneka sajian khas warkop berkualitas tinggi, mulai dari olahan indomie spesial hingga burjo legendaris, disajikan dengan harga bersahabat untuk semua kalangan.',
                 'label' => 'Deskripsi Warkop',
                 'type' => 'textarea'
             ],

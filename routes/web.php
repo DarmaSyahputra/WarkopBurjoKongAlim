@@ -14,7 +14,8 @@ Route::get('/', [MenuController::class, 'index'])->name('home');
 Route::post('/contact', [MenuController::class, 'contact'])->name('contact.store');
 
 // Admin Routes
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () 
+{
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
     Route::resource('categories', CategoryController::class);
